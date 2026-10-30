@@ -1,0 +1,14 @@
+---
+description: Stack and conventions for the payment disbursement exercise
+alwaysApply: true
+---
+
+# Dispersión de pagos
+
+- API: NestJS + TypeScript strict in `/api`. Frontend: React + Vite in `/web`.
+- Validate API input with DTOs and class-validator. Throw Nest HTTP exceptions.
+- Amounts are `numeric(12,2)`: store and calculate them as decimal strings/cents, never float.
+- The batch `total_amount` is calculated on the server.
+- Do not edit a batch that is not `DRAFT`.
+- `SUPABASE_SERVICE_ROLE_KEY` lives only in `/api/.env`. Never commit secrets or send the service role key to the frontend.
+- Use `@supabase/supabase-js` from `SupabaseModule` / `SupabaseService`.
